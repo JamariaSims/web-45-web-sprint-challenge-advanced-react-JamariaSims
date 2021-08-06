@@ -1,6 +1,6 @@
 import React from "react";
 import useForm from "../hooks/useForm";
-
+const something = () => {};
 const CheckoutForm = () => {
 	const [values, setValues] = useForm({
 		firstName: "",
