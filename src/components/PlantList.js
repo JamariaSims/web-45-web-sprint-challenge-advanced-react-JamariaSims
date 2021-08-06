@@ -6,14 +6,18 @@ export default class PlantList extends Component {
 		super();
 		this.state = { plants: [] };
 	}
+
 	componentDidMount() {
-		const fetchData = async () => {
-			axios.get("http://localhost:3333/plants").then((response) => {
-				this.setState({ ...this.state, ["plants"]: response.data });
-			});
-		};
-		fetchData();
+		async function getData() {
+			let returnData = await axios.get("http://localhost:3333/plants");
+			return returnData.data;
+		}
+		const returnData = getData();
+		returnData.then((res) => {
+			this.setState({ ...this.state.plants, ["plants"]: res });
+		});
 	}
+
 	/*********  CHANGE ANYTHING IN THE RENDER FUNCTION *********/
 	render() {
 		return (
