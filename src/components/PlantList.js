@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
+
 export default class PlantList extends Component {
 	constructor() {
 		super();
 		this.state = { plants: [] };
 	}
 	componentDidMount() {
-		axios.get("http://localhost:3333/plants").then((res) => {
-			const returnData = res.data;
-			this.setState({ ...this.state, ["plants"]: returnData });
-		});
+		const fetchData = async () => {
+			axios.get("http://localhost:3333/plants").then((response) => {
+				this.setState({ ...this.state, ["plants"]: response.data });
+			});
+		};
+		fetchData();
 	}
 	/*********  CHANGE ANYTHING IN THE RENDER FUNCTION *********/
 	render() {

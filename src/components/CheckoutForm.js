@@ -1,16 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useForm from "../hooks/useForm";
-const something = () => {};
 const CheckoutForm = () => {
-	const [values, setValues] = useForm({
-		firstName: "",
-		lastName: "",
-		address: "",
-		city: "",
-		state: "",
-		zip: "",
-		showSuccessMessage: false,
-	});
+	const [values, setValues] = useForm();
 	const ShowSuccess = (e) => {
 		e.preventDefault();
 		setValues({ ...values, ["showSuccessMessage"]: true });

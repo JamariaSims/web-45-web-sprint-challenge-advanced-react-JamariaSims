@@ -12,9 +12,7 @@ describe("Checkout Form Test", () => {
 	test("form shows success message on submit with form details", async () => {
 		const header = libraryTesting.render(<CheckoutForm />);
 		userEvent.click(header.getByRole("button"));
-		await (() => {
-			const successMessage = header.getByTestId(/successMessage/);
-			expect(successMessage).toBeInTheDocument();
-		});
+		const successMessage = header.getByTestId(/successMessage/i);
+		expect(successMessage).toBeInTheDocument();
 	});
 });
